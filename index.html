@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#FF3D7F">
+    <script>
+      // Loader plays once per session, never with reduced motion. Decided before first paint.
+      (function (d) {
+        try {
+          var seen = sessionStorage.getItem('snb-poured');
+          var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+          d.classList.add(seen || still ? 'no-loader' : 'is-loading');
+        } catch (e) { d.classList.add('no-loader'); }
+        d.classList.add('js');
+      })(document.documentElement);
+    </script>
+    <!--#seo-->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Rubik:wght@400;500;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Rubik:wght@400;500;700;800&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@600&display=swap">
+    </noscript>
+  </head>
+  <body>
+    <a class="skip" href="#menu">Skip to the menu</a>
+
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="loader__inner">
+        <svg class="loader__cup" viewBox="0 0 200 270">
+          <defs><clipPath id="ld-clip"><path d="M46 96h108l-13 150H59Z"/></clipPath></defs>
+          <g clip-path="url(#ld-clip)">
+            <rect width="200" height="270" fill="#FFF4E2"/>
+            <g class="loader__liquid" id="loader-liquid" transform="translate(0 250)">
+              <path class="loader__wave" d="M0 10Q25 0 50 10T100 10T150 10T200 10T250 10T300 10T350 10T400 10V300H0Z" fill="#1FB6FF"/>
+              <path class="loader__wave loader__wave--slow" d="M0 74Q25 66 50 74T100 74T150 74T200 74T250 74T300 74T350 74T400 74V300H0Z" fill="#E0245E"/>
+            </g>
+          </g>
+          <path d="M46 96h108l-13 150H59Z" fill="none" stroke="#3B1F14" stroke-width="7" stroke-linejoin="round"/>
+          <g class="loader__lid" id="loader-lid">
+            <path d="M112 92 128 12h12l-16 80Z" fill="#FFFDF7" stroke="#3B1F14" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M118 62h12M124 34h11" stroke="#FF3D7F" stroke-width="6"/>
+            <path d="M48 90c0-46 104-46 104 0Z" fill="#FFFDF7" fill-opacity=".6" stroke="#3B1F14" stroke-width="6" stroke-linejoin="round"/>
+            <rect x="40" y="86" width="120" height="14" rx="6" fill="#FFFDF7" stroke="#3B1F14" stroke-width="6"/>
+          </g>
+        </svg>
+        <p class="loader__pct"><span id="loader-pct">0</span>%</p>
+        <p class="loader__msg">pouring your slush…</p>
+      </div>
+      <div class="loader__drips"><!--#drip:5--></div>
+    </div>
+
+    <header class="topbar">
+      <a class="logo" href="#top" aria-label="Sip & Bite, back to top">
+        <span class="logo__mark" aria-hidden="true">S&amp;B</span>
+        <span class="logo__word">Sip &amp; Bite</span>
+      </a>
+      <nav class="topnav" aria-label="Sections">
+        <a href="#menu">Menu</a><a href="#deals">Deals</a><a href="#branches">Branches</a><a href="#follow">Follow</a>
+      </nav>
+      <button class="btn btn--pink btn--small topbar__call" type="button" data-open-sheet>Order now</button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__deco" aria-hidden="true">
+          <svg class="squiggle squiggle--1" viewBox="0 0 160 40"><path d="M4 20C20 2 30 38 48 20S78 2 94 20s30 18 46 0" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg>
+          <svg class="squiggle squiggle--2" viewBox="0 0 160 40"><path d="M4 20C20 2 30 38 48 20S78 2 94 20s30 18 46 0" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg>
+          <span class="sprinkle s1"></span><span class="sprinkle s2"></span><span class="sprinkle s3"></span><span class="sprinkle s4"></span><span class="sprinkle s5"></span><span class="sprinkle s6"></span>
+          <svg class="spark spark--1" viewBox="0 0 20 20"><path d="M10 0l2.6 7.4L20 10l-7.4 2.6L10 20l-2.6-7.4L0 10l7.4-2.6Z" fill="currentColor"/></svg>
+          <svg class="spark spark--2" viewBox="0 0 20 20"><path d="M10 0l2.6 7.4L20 10l-7.4 2.6L10 20l-2.6-7.4L0 10l7.4-2.6Z" fill="currentColor"/></svg>
+        </div>
+
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="tape-wrap"><span class="tape"><!--#tagline--></span></p>
+            <h1 class="wordmark" id="hero-title">
+              <span class="sr-only">Sip &amp; Bite</span>
+              <span class="wm-line wm-sip" aria-hidden="true"><span class="wm-l">S</span><span class="wm-l">i</span><span class="wm-l">p</span></span>
+              <span class="wm-line wm-bite" aria-hidden="true"><span class="wm-amp">&amp;</span><span class="wm-l">B</span><span class="wm-l">i</span><span class="wm-l">t</span><span class="wm-l">e</span></span>
+            </h1>
+            <p class="hero__ur urdu" lang="ur" dir="rtl"><!--#taglineUrdu--></p>
+            <p class="hero__lede">Ice cream, slush, cold coffee, golgappay and finger chips in Dera Ghazi Khan. Two branches, budget prices, and home delivery that's just one call away.</p>
+            <div class="hero__ctas">
+              <button class="btn btn--pink btn--huge" type="button" data-open-sheet>
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+                Call for Delivery
+              </button>
+              <a class="btn btn--cream btn--huge" href="#menu">
+                See Menu
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M12 4v15M5 12l7 7 7-7"/></svg>
+              </a>
+            </div>
+            <p class="hero__small">Phone &amp; WhatsApp orders · Ghanta Ghar Chowk · Manka Canal Road</p>
+          </div>
+
+          <div class="hero__cup">
+            <svg class="cup-badge" viewBox="0 0 400 400" aria-hidden="true"><path d="<!--#scallop-->"/></svg>
+            <div class="cup-stage">
+              <button class="cup-btn" type="button" aria-label="Shake the slushy cup">
+                <canvas id="cup-canvas" aria-hidden="true"></canvas>
+              </button>
+              <p class="cup-hint" aria-hidden="true">
+                <span class="cup-hint__text">tap to shake!</span>
+                <svg viewBox="0 0 80 60"><path d="M6 8c30 0 52 14 58 40m0 0-12-6m12 6 4-13" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </p>
+            </div>
+            <div class="cup-controls">
+              <button class="chip-btn sound-toggle" type="button" aria-pressed="false">
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4z"/><path class="snd-waves" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/><path class="snd-mute" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 9l6 6m0-6-6 6"/></svg>
+                <span class="sound-toggle__label">Sound off</span>
+              </button>
+              <button class="chip-btn tilt-toggle" type="button" hidden>Tilt your phone</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu" id="menu" aria-labelledby="menu-title">
+        <div class="drip drip--cream"><!--#drip:3--></div>
+        <div class="sprinkle-layer" aria-hidden="true"></div>
+        <div class="wrap">
+          <header class="sec-head" data-jelly>
+            <p class="sec-kicker">The sticker board</p>
+            <h2 class="sec-title" id="menu-title">What's in the freezer</h2>
+            <p class="sec-note">Prices are being updated. Call either branch for today's rates.</p>
+          </header>
+          <!--#menu-->
+        </div>
+      </section>
+
+      <section class="deals" id="deals" aria-labelledby="deal-title">
+        <div class="drip drip--slush"><!--#drip:7--></div>
+        <div class="sprinkle-layer" aria-hidden="true"></div>
+        <!--#deal-->
+      </section>
+
+      <section class="branches" id="branches" aria-labelledby="branches-title">
+        <div class="drip drip--mango"><!--#drip:11--></div>
+        <div class="sprinkle-layer" aria-hidden="true"></div>
+        <div class="wrap">
+          <header class="sec-head" data-jelly>
+            <p class="sec-kicker">Two branches, one craving</p>
+            <h2 class="sec-title" id="branches-title">Find your nearest scoop</h2>
+          </header>
+          <div class="branch-grid"><!--#branches--></div>
+        </div>
+      </section>
+
+      <section class="follow" id="follow" aria-labelledby="follow-title">
+        <div class="drip drip--cream"><!--#drip:19--></div>
+        <div class="wrap">
+          <header class="sec-head" data-jelly>
+            <p class="sec-kicker"><!--#handle--></p>
+            <h2 class="sec-title" id="follow-title">Follow the drip</h2>
+          </header>
+          <ul class="socials"><!--#socials--></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="drip drip--choc"><!--#drip:23--></div>
+      <div class="wrap footer__wrap">
+        <p class="footer__ur urdu" lang="ur" dir="rtl">پھر ضرور آئیے گا!</p>
+        <ul class="footer__contacts"><!--#contacts--></ul>
+        <p class="footer__fine">© <span data-year>2026</span> Sip &amp; Bite, Dera Ghazi Khan · Home delivery by phone &amp; WhatsApp</p>
+      </div>
+      <p class="footer__giant" aria-hidden="true">Sip &amp; Bite</p>
+    </footer>
+
+    <!--#callbar-->
+    <!--#sheet-->
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

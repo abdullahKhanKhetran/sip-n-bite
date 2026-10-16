@@ -1,0 +1,22 @@
+{
+  "name": "sip-n-bite",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sip & Bite DG Khan — ice cream, slush & snacks. One-page site.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "og": "node scripts/make-og.mjs",
+    "images": "node scripts/optimize-images.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "devDependencies": {
+    "opentype.js": "^2.0.0",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.4"
+  }
+}
